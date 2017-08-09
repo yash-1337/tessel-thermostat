@@ -1,0 +1,23 @@
+{
+  "name": "alexa-app-tessel-thermostat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yash-1337/tessel-thermostat.git"
+  },
+  "author": "Yash Patel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yash-1337/tessel-thermostat/issues"
+  },
+  "homepage": "https://github.com/yash-1337/tessel-thermostat",
+  "dependencies": {
+    "alexa-app": "^4.0.1",
+    "express": "^4.15.4"
+  }
+}
