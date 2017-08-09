@@ -16,7 +16,7 @@ app.intent("TemperatureIntent", {
     "utterances": ["temperature inside"]
   },
   function (request, response) {
-    return axios("https://api.ipify.org/?format=json")
+    return axios(process.env.TESSEL_URL + "temperature")
       .then(function (res) {
         response.say("the temperature is " + res.data.ip + " degrees.");
       })
@@ -31,7 +31,7 @@ app.intent("HumidityIntent", {
     "utterances": ["humidity inside"]
   },
   function (request, response) {
-    return axios.get('https://api.ipify.org/?format=json')
+    return axios.get(process.env.TESSEL_URL + "humidity")
       .then(function (res) {
         response.say("The humidity is " + res.data.ip + " percent.");
       })
