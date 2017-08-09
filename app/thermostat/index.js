@@ -4,12 +4,11 @@ var axios = require('axios');
 var app = new alexa.app("thermostat");
 
 app.pre = function (request, response, type) {
-    if (request.sessionDetails.application.applicationId !== process.env.APP_ID) {
-        // Fail ungracefully
-        throw 'Invalid applicationId: ' + request.sessionDetails.application.applicationId;
-    }
+  if (request.sessionDetails.application.applicationId !== process.env.APP_ID) {
+    // Fail ungracefully
+    throw 'Invalid applicationId: ' + request.sessionDetails.application.applicationId;
+  }
 };
-
 
 app.intent("TemperatureIntent", {
     "slots": {},
