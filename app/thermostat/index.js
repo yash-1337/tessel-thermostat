@@ -1,47 +1,47 @@
-var alexa_app = require("alexa-app");
-//var axios = require('axios');
-var express = require("express");
-//var verifier = require('alexa-verifier-middleware');
+var alexa = require("alexa-app");
+var axios = require('axios');
 
-var app = express();
+var app = new alexa.app("thermostat");
 
-var alexa = new alexa_app.app("thermostat");
+app.pre = function (request, response, type) {
+    if (request.sessionDetails.application.applicationId !== process.env.APP_ID) {
+        // Fail ungracefully
+        throw 'Invalid applicationId: ' + request.sessionDetails.application.applicationId;
+    }
+};
 
-alexa.intent("TemperatureIntent", {
+
+app.intent("TemperatureIntent", {
     "slots": {},
     "utterances": ["temperature inside"]
   },
   function (request, response) {
     response.say("Temperature");
-    /*return axios("https://api.ipify.org/?format=json")
+    return axios("https://api.ipify.org/?format=json")
       .then(function (res) {
         response.say("the temperature is " + res.data.ip + " degrees.");
       })
       .catch(function (error) {
         response.say("An error occured!");
-      });*/
+      });
   }
 );
 
-alexa.intent("HumidityIntent", {
+app.intent("HumidityIntent", {
     "slots": {},
     "utterances": ["humidity inside"]
   },
   function (request, response) {
     response.say("Humidity");
-    /*return axios.get('https://api.ipify.org/?format=json')
+    return axios.get('https://api.ipify.org/?format=json')
       .then(function (res) {
         response.say("The humidity is " + res.data.ip + " percent.");
       })
       .catch(function (error) {
         response.say("An error occured!");
-      });*/
+      });
 
   }
 );
 
-
-//app.use(verifier);
-alexa.express({ expressApp: app, checkCert: false});
-
-app.listen(3000);
+module.exports = app;
