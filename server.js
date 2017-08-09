@@ -6,5 +6,5 @@ AlexaAppServer.start({
   app_dir: 'app',
   port: process.env.PORT,
   debug: false,
-  verify: true
+  verify: false
 });
