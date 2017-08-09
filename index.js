@@ -42,6 +42,6 @@ alexa.intent("HumidityIntent", {
 
 
 //app.use(verifier);
-alexa.express({ expressApp: app, debug: true });
+alexa.express({ expressApp: app, checkCert: false});
 
 app.listen(3000);
