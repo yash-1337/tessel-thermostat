@@ -4,10 +4,9 @@ var axios = require('axios');
 var app = new alexa.app("thermostat");
 
 app.pre = function (request, response, type) {
-  if (request.sessionDetails.application.applicationId == process.env.APP_ID) {
+  if (request.sessionDetails.application.applicationId !== process.env.APP_ID) {
     // Fail ungracefully
-    return response.say('Invalid applicationId: ' + request.sessionDetails.application.applicationId);
-    return response.say('Correct applicationId: ' + process.env.APP_ID);
+    return response.fail('Invalid applicationId: ' + request.sessionDetails.application.applicationId);
   }
 };
 
