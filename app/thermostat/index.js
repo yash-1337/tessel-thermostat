@@ -33,7 +33,7 @@ app.intent("HumidityIntent", {
   function (request, response) {
     return axios.get(process.env.TESSEL_URL + "humidity")
       .then(function (res) {
-        response.say("The humidity is " + res.data.humidity + " percent.");
+        response.say("The relative humidity is " + res.data.humidity + " percent.");
       })
       .catch(function (error) {
         response.say("An error occured!");
