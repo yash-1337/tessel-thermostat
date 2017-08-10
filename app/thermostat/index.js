@@ -19,7 +19,7 @@ app.intent("TemperatureIntent", {
     "utterances": ["temperature inside"]
   },
   function (request, response) {
-    return axios(process.env.TESSEL_URL + "temperature")
+    return axios("http://73.232.58.52/temperature")
       .then(function (res) {
         response.say("the temperature is " + res.data.temperature + " degrees.");
       })
@@ -34,7 +34,7 @@ app.intent("HumidityIntent", {
     "utterances": ["humidity inside"]
   },
   function (request, response) {
-    return axios.get(process.env.TESSEL_URL + "humidity")
+    return axios.get("http://73.232.58.52/humidity")
       .then(function (res) {
         response.say("The relative humidity is " + res.data.humidity + " percent.");
       })
