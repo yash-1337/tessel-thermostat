@@ -10,10 +10,6 @@ app.pre = function (request, response, type) {
   }
 };
 
-app.launch(function(request, response) {
-  response.say("What would you like to know?");
-});
-
 app.intent("TemperatureIntent", {
     "slots": {},
     "utterances": ["temperature inside"]
