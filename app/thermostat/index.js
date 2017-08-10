@@ -41,7 +41,6 @@ app.intent("HumidityIntent", {
       .catch(function (error) {
         response.say("An error occured!");
       });
-
   }
 );
 
