@@ -15,6 +15,35 @@ app.launch(function(request, response) {
   response.shouldEndSession(false);
 });
 
+app.intent("AMAZON.HelpIntent",{
+  "slots": {},
+  "utterances": []
+}, function(request, response) {
+  	var helpOutput = "You can say 'temperature inside' or 'humidity inside'. You can also say stop or exit to quit.";
+  	var reprompt = "What would you like to do?";
+  	// AMAZON.HelpIntent must leave session open -> .shouldEndSession(false)
+  	response.say(helpOutput).reprompt(reprompt).shouldEndSession(false);
+  	return
+});
+
+app.intent("AMAZON.StopIntent",{
+  "slots": {},
+  "utterances": []
+}, function(request, response) {
+  	var stopOutput = "Ok. Request has been cancelled. Good-bye!";
+  	response.say(stopOutput);
+  	return
+});
+
+app.intent("AMAZON.CancelIntent",{
+  "slots": {},
+  "utterances": []
+}, function(request, response) {
+  	var cancelOutput = "Request has been cancelled. See you later!";
+  	response.say(cancelOutput);
+  	return
+});
+
 app.intent("TemperatureIntent", {
     "slots": {},
     "utterances": ["temperature inside"]
