@@ -22,7 +22,7 @@ app.intent("AMAZON.HelpIntent",{
   	var helpOutput = "You can say 'temperature inside' or 'humidity inside'. You can also say stop or exit to quit.";
   	var reprompt = "What would you like to do?";
   	// AMAZON.HelpIntent must leave session open -> .shouldEndSession(false)
-  	return response.say(helpOutput).reprompt(reprompt).shouldEndSession(false);
+  	return response.say(helpOutput).shouldEndSession(false, reprompt);
   	
 });
 
